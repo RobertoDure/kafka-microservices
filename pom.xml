@@ -12,7 +12,8 @@
 
     <modules>
         <module>producer-service</module>
-        <module>consumer-service</module>
+        <module>email-consumer-service</module>
+        <module>mongo-consumer-service</module>
     </modules>
 
     <parent>

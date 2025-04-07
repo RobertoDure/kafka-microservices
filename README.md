@@ -1,6 +1,8 @@
 # Kafka Microservices Demo
 
-This project demonstrates a simple microservices architecture using Apache Kafka for message communication between services. It consists of two Spring Boot services (producer and consumer) that communicate through a Kafka message broker.
+This project demonstrates a simple microservices architecture using Apache Kafka for message communication between services. It consists of three Spring Boot services that communicate through a Kafka message broker.
+The producer service sends messages to a Kafka topic, while two consumer services consume those messages. One consumer service saves the message to a MongoDB database, and the other sends an email using the message consumed.
+The project is designed to be run locally using Docker for Kafka and Zookeeper, and it uses Maven for dependency management and building the project.
 
 ## Project Structure
 
@@ -8,7 +10,8 @@ This project demonstrates a simple microservices architecture using Apache Kafka
 kafka-microservices/
 ├── docker-compose.yml    # Docker configuration for Kafka and Zookeeper
 ├── producer-service/     # Service that produces messages to Kafka
-├── consumer-service/     # Service that consumes messages from Kafka
+├── mongo-consumer-service/     # Service that consumes messages from Kafka and saves this message in MongoDB
+├── email-consumer-service/     # Service that consumes messages from Kafka and sends an email using the message consumed
 └── pom.xml              # Parent POM file
 ```
 
@@ -21,6 +24,11 @@ kafka-microservices/
 - Apache Kafka
 - Apache Zookeeper
 - Maven
+- MongoDB
+- Spring Data MongoDB
+- Spring Boot Starter Mail
+- Spring Boot Starter Web
+- Java Mail Sender
 
 ## Prerequisites
 
@@ -85,16 +93,23 @@ The consumer service automatically listens for messages on the "message-topic" t
 - Default port: 8080
 - Kafka topic: message-topic
 
-### Consumer Service
-- Application configuration: `consumer-service/src/main/resources/application.yml`
+### Email Consumer Service
+- Application configuration: `mongo-consumer-service/src/main/resources/application.yml`
 - Default port: 8081
 - Consumer group: message-group
+
+### Mongo DB Consumer Service
+- Application configuration: `email-consumer-service/src/main/resources/application.yml`
+- Default port: 8082
+- Consumer group: mongo-message-group
 
 ## Docker Configuration
 
 The `docker-compose.yml` file includes:
 - Zookeeper for Kafka cluster management
 - Kafka broker configured for local development
+- MongoDB for data persistence
+- fake-smtp-server for email simulation
 
 ## Development
 

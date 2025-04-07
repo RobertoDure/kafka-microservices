@@ -1,0 +1,14 @@
+server:
+  port: 8082
+
+spring:
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      group-id: mongo-message-group
+      auto-offset-reset: earliest
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: messages

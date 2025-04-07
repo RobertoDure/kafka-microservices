@@ -1,11 +1,11 @@
-package com.kafka.consumer;
+package com.kafka.email.consumer;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ConsumerServiceApplication {
+public class EmailConsumerServiceApplication {
     public static void main(String[] args) {
-        SpringApplication.run(ConsumerServiceApplication.class, args);
+        SpringApplication.run(EmailConsumerServiceApplication.class, args);
     }
 }

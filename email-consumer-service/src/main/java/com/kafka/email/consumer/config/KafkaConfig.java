@@ -1,4 +1,4 @@
-package com.kafka.consumer.config;
+package com.kafka.email.consumer.config;
 
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;
